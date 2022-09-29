@@ -6,7 +6,7 @@ import { Style } from './Style';
 
 const ItemCard = ({ item }) => {
     const navigation = useNavigation();
-
+    const date = new Date(item.publishedAt).toLocaleDateString('en-GB')
     return (
         <View style={Style.container}>
             <TouchableOpacity onPress={() => navigation.navigate('Details', {
@@ -14,7 +14,7 @@ const ItemCard = ({ item }) => {
                 source: item.source
             })}>
                 <Text variant='titleMedium'>{item.title}</Text>
-                <Text variant='bodySmall' style={{ marginTop: 3 }}>{item.publishedAt ? item.publishedAt : 'undefined'}</Text>
+                <Text variant='bodySmall' style={{ marginTop: 3 }}>{date ? date : 'undefined'}</Text>
             </TouchableOpacity >
             <Card.Cover
                 loadingIndicatorSource={() => (

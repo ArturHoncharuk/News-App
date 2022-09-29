@@ -8,7 +8,7 @@ import SafeAreaLayout from '../Layouts/SafeAreaLayout';
 const Details = () => {
   const route = useRoute()
   const { title, description, publishedAt, url, urlToImage, content, author } = route.params.item;
-
+  const date = new Date(publishedAt).toLocaleDateString('en-GB')
   const handleRedirectPress = async () => {
     await Linking.openURL(url)
   }
@@ -19,7 +19,7 @@ const Details = () => {
         <Text style={s.text} variant='titleLarge'>{title}</Text>
         <Text style={s.text} variant='bodyMedium'>{description}</Text>
         <Text style={s.text} variant='titleSmall'>{route.params.source.name} - {author ? author : 'undefined'}</Text>
-        <Text style={s.text} variant='bodySmall'>{publishedAt}</Text>
+        <Text style={s.text} variant='bodySmall'>{date}</Text>
         <Card.Cover
           source={{ uri: urlToImage }}
           style={s.image}
